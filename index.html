@@ -111,6 +111,10 @@ table{border-collapse:collapse;width:100%;font-size:.82rem}
 th,td{padding:8px 10px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
 th{font-family:var(--f-display);font-weight:600;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;background:var(--surface);color:var(--fg2)}
 td.r,th.r{text-align:right}
+td.c,th.c{text-align:center}
+.nw{white-space:nowrap}
+tr.grp td{background:var(--surface2);color:var(--accent);font-family:var(--f-display);font-weight:600;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;padding-block:6px}
+th.gh{border-bottom:1px solid var(--line);text-align:center}
 tr:last-child td{border-bottom:0}
 .rank{font-family:var(--f-display);font-weight:600}
 .rank.bad{color:var(--gold)}
@@ -258,8 +262,8 @@ footer p{max-width:none;opacity:.9}
 
 <section id="componentes"><div class="wrap">
   <div class="sechead"><div class="eyebrow">INFRA-BR por UF</div><h2>Leitura por componente e indicador</h2>
-  <p>Os 21 componentes do INFRA-BR, com a média das 27 UFs, as UFs de pior desempenho, a correlação com a nota geral e as PNS que atuam sobre cada um.</p></div>
-  <div class="tbl"><table id="tbComp"><thead><tr><th>Componente</th><th>Dimensão</th><th class="r">Média UFs</th><th class="r">Amplitude</th><th class="r">ρ c/ nota geral</th><th>Piores UFs</th><th>PNS diretas</th><th>PNS só indiretas</th></tr></thead><tbody></tbody></table></div>
+  <p>Os 20 componentes do INFRA-BR, com a média das 27 UFs, as UFs de pior desempenho, a correlação com a nota geral e as PNS que atuam sobre cada um.</p></div>
+  <div class="tbl"><table id="tbComp"><colgroup><col style="width:25%"><col style="width:11%"><col style="width:11%"><col style="width:11%"><col style="width:16%"><col style="width:13%"><col style="width:13%"></colgroup><thead><tr><th>Componente</th><th class="c">Média das UFs</th><th class="c">Amplitude</th><th class="c">ρ com a nota geral</th><th class="c">Três piores UFs</th><th class="c">PNS diretas</th><th class="c">PNS só indiretas</th></tr></thead><tbody></tbody></table></div>
   <p class="note">Amplitude = diferença entre a melhor e a pior UF no componente. ρ = correlação de postos de Spearman entre a nota do componente e a nota geral do INFRA-BR nas 27 UFs.</p>
   <h3>Onde cada PNS encontra o maior déficit</h3>
   <p>Nota média de cada UF nos indicadores do INFRA-BR ligados diretamente a cada PNS. Quanto mais escura a célula, pior o desempenho da UF nesses indicadores e maior a margem para a proposta fazer diferença.</p>
@@ -272,8 +276,8 @@ footer p{max-width:none;opacity:.9}
 
 <section id="territorio"><div class="wrap">
   <div class="sechead"><div class="eyebrow">Recorte territorial</div><h2>PNS regionais e a posição da UF no INFRA-BR</h2>
-  <p>Posição da UF (de 27) na dimensão mais ligada à proposta e no índice geral. Posições de 20º para baixo aparecem destacadas.</p></div>
-  <div class="tbl"><table id="tbUf"><thead><tr><th>PNS</th><th>Proposta</th><th>UF</th><th>Dimensão-alvo</th><th class="r">Nota</th><th class="r">Posição</th><th class="r">INFRA-BR geral</th></tr></thead><tbody></tbody></table></div>
+  <p>Para cada PNS de alcance regional, a nota e a posição da UF (de 1º a 27º) na dimensão do INFRA-BR mais ligada à proposta e no índice geral. Posições do 20º lugar para baixo aparecem em dourado.</p></div>
+  <div class="tbl"><table id="tbUf"><colgroup><col style="width:6%"><col style="width:34%"><col style="width:6%"><col style="width:16%"><col style="width:9%"><col style="width:9%"><col style="width:10%"><col style="width:10%"></colgroup><thead><tr><th rowspan="2">PNS</th><th rowspan="2">Proposta</th><th rowspan="2" class="c">UF</th><th colspan="3" class="gh">Dimensão do INFRA-BR mais ligada à proposta</th><th colspan="2" class="gh">INFRA-BR geral da UF</th></tr><tr><th>Dimensão</th><th class="c">Nota</th><th class="c">Posição</th><th class="c">Nota</th><th class="c">Posição</th></tr></thead><tbody></tbody></table></div>
 </div></section>
 
 <section id="explorador"><div class="wrap">
@@ -375,12 +379,13 @@ const UFT = [[11,'AM','AG'],[27,'AM','AG'],[19,'AM','MA'],[49,'AP','AG'],[42,'RR
 const byN = Object.fromEntries(R.map(r => [r.n, r]));
 $('#tbUf tbody').innerHTML = UFT.map(([n, uf, dk]) => {
   const u = D.uf[uf], [nota, pos] = u[dk], [g, gp] = u.geral, r = byN[n];
-  return `<tr><td class="rank">${n}</td><td>${esc(r.titulo)}</td><td>${esc(u.nome)}</td><td>${esc(dims[dk].nome)}</td><td class="r num">${fmt(nota)}</td><td class="r num rank ${pos >= 20 ? 'bad' : ''}">${pos}º</td><td class="r num">${fmt(g)} · ${gp}º</td></tr>`;
+  return `<tr><td class="rank">${n}</td><td>${esc(r.titulo)}</td><td class="c" title="${esc(u.nome)}"><b>${uf}</b></td><td>${esc(dims[dk].nome)}</td><td class="c num">${fmt(nota)}</td><td class="c num rank ${pos >= 20 ? 'bad' : ''}">${pos}º</td><td class="c num">${fmt(g)}</td><td class="c num rank ${gp >= 20 ? 'bad' : ''}">${gp}º</td></tr>`;
 }).join('');
 
 // componentes
 const lstN = a => a.length ? a.join(', ') : '—';
-$('#tbComp tbody').innerHTML = D.comp_csv.slice().sort((a, b) => a.dim.localeCompare(b.dim) || a.nome.localeCompare(b.nome)).map(c => `<tr><td><b>${esc(c.nome)}</b></td><td>${esc(c.dim)}</td><td class="r num">${fmt(c.media)}</td><td class="r num">${fmt(c.max - c.min)}</td><td class="r num">${fmtr(c.rho)}</td><td>${c.piores.slice(0, 3).join(', ')}</td><td class="num">${lstN(c.pns_d)}</td><td class="num">${lstN(c.pns_i)}</td></tr>`).join('');
+{ const cs = D.comp_csv.slice().sort((a, b) => a.dim.localeCompare(b.dim) || a.nome.localeCompare(b.nome)); let last = '';
+$('#tbComp tbody').innerHTML = cs.map(c => (c.dim !== last ? `<tr class="grp"><td colspan="7">${esc(last = c.dim)}</td></tr>` : '') + `<tr><td><b>${esc(c.nome)}</b></td><td class="c num">${fmt(c.media)}</td><td class="c num">${fmt(c.max - c.min)}</td><td class="c num">${fmtr(c.rho)}</td><td class="c nw">${c.piores.slice(0, 3).join(' · ')}</td><td class="c num">${lstN(c.pns_d)}</td><td class="c num">${lstN(c.pns_i)}</td></tr>`).join(''); }
 // mapa de calor
 const ufOrder = D.ufs.slice().sort((a, b) => D.geral_uf[a] - D.geral_uf[b]);
 const hv = Object.values(D.heat).flatMap(o => Object.values(o)); const hmin = Math.min(...hv), hmax = Math.max(...hv);
