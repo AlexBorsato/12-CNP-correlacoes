@@ -157,6 +157,30 @@ details.pns summary::-webkit-details-marker{display:none}
 .odsl{display:flex;flex-wrap:wrap;gap:6px}
 .odsl span.o{display:inline-flex;gap:6px;align-items:center;font-size:.78rem;color:var(--fg2)}
 .lac{font-size:.82rem;color:var(--fg2);border-left:3px solid var(--ouro);padding-left:12px}
+.chk{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;background:var(--surface);padding:12px 14px}
+.chk .lbl{font-family:var(--f-display);font-weight:600;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--fg2)}
+.chk label{display:inline-flex;gap:6px;align-items:center;font-size:.86rem;cursor:pointer}
+.chk input,.filters input[type=checkbox]{accent-color:var(--accent);width:16px;height:16px;margin:0}
+.chk .sep{width:1px;align-self:stretch;background:var(--line)}
+.filters label.tg{display:flex;flex-direction:row;align-items:center;gap:8px;text-transform:none;letter-spacing:0;font-size:.86rem;font-weight:500;color:var(--fg);flex:1 1 220px;cursor:pointer;padding-bottom:6px}
+.potnote{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px 16px;font-size:.82rem;color:var(--fg2);background:var(--surface);padding:14px}
+.potnote .h{grid-column:1 / -1;font-family:var(--f-display);font-weight:600;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--fg)}
+.potnote .h + p{grid-column:1 / -1;margin:0}
+.potnote div p{margin:4px 0 0}
+table.corr td{font-size:.8rem}
+table.corr ul{margin:4px 0 0;padding:0;list-style:none;display:grid;gap:3px}
+table.corr li{display:grid;grid-template-columns:1.3rem 1fr;gap:5px;align-items:start}
+table.corr .lv{display:inline-block;width:1.2rem}
+table.corr a{color:inherit}
+.odsm{display:inline-flex;flex-wrap:wrap;gap:3px}
+.odsm span{display:inline-block;min-width:1.5rem;padding:1px 3px;color:#fff;font-family:var(--f-display);font-weight:700;font-size:.72rem;text-align:center;cursor:help}
+.tag18{display:inline-block;font-family:var(--f-display);font-weight:600;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;background:var(--gold-soft);color:var(--fg);padding:1px 7px;margin-left:4px;white-space:nowrap}
+.btnlink{font-family:var(--f-display);font-weight:600;background:var(--accent);color:var(--bg);border:0;padding:9px 16px;cursor:pointer;font-size:.88rem}
+.btnlink:focus-visible{outline:2px solid var(--ouro);outline-offset:2px}
+.tl{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:0;margin:4px 0 0;padding:0;list-style:none;border-top:3px solid var(--accent)}
+.tl li{padding:12px 14px 4px 0;font-size:.84rem;color:var(--fg2);position:relative}
+.tl li::before{content:"";position:absolute;top:-8px;left:0;width:13px;height:13px;background:var(--ouro)}
+.tl b{display:block;font-family:var(--f-display);font-size:1.25rem;color:var(--accent);margin:6px 0 2px}
 .empty{padding:24px;text-align:center;color:var(--muted);background:var(--surface)}
 
 .gaps{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
@@ -208,6 +232,20 @@ footer p{max-width:none;opacity:.9}
   <div class="meta"><span>Fontes: Caderno de Propostas Aprovadas do 12º CNP · INFRA-BR 2026 (Relatório Executivo) · IPS Brasil 2024 · Agenda 2030 (ONU)</span><span>Elaborado em outubro de 2026</span></div>
 </div></header>
 
+<section id="contexto"><div class="wrap">
+  <div class="sechead"><div class="eyebrow">Contexto</div><h2>Do CNP ao INFRA-BR: como surgiu esta análise</h2></div>
+  <p>O ponto de partida foi a decisão do Confea de dar um teor mais técnico ao Congresso Nacional de Profissionais. Em edições anteriores, parte das propostas tratava de questões internas ao Sistema Confea/Crea e pouco se ligava a ações capazes de melhorar a qualidade de vida das pessoas por meio da engenharia. A solução proposta foi usar um índice já existente como referência para as propostas que chegam dos Creas e que, depois de sistematizadas, são levadas ao CNP.</p>
+  <p>Nessa busca, o Confea encontrou o IPS Brasil, cuja primeira edição saiu em 2024, justamente o ano de preparação do 12º CNP, realizado em 2025. A partir de 2024, o IPS Brasil passou a ser estudado para que as Propostas Nacionais Sistematizadas (PNS) já chegassem com alguma amarração ao índice. O estudo mostrou que, dos <span class="ipsN">53</span> indicadores do IPS Brasil, apenas 17 (<span class="ipsP">cerca de 32%</span>) têm relação com a engenharia. A orientação foi concentrar as propostas nesses poucos indicadores.</p>
+  <p>Com o tempo, a Presidência do Confea entendeu que o Conselho deveria ter um índice próprio. O IPS Brasil cobre todos os municípios do país, mas a maior parte dos seus indicadores não depende da engenharia. Daí surgiu a ideia de um índice semelhante, formado apenas por indicadores que a engenharia consegue melhorar: o Índice Confea de Infraestrutura do Brasil, o INFRA-BR. Ou seja, a necessidade de qualificar o CNP levou à busca de um índice para ancorar as propostas, e essa busca deu origem ao INFRA-BR.</p>
+  <p>Este relatório fecha esse ciclo: cruza as PNS aprovadas no 12º CNP com os dois índices e com a Agenda 2030, para mostrar onde cada proposta pode produzir resultado mensurável.</p>
+  <ol class="tl" aria-label="Linha do tempo">
+    <li><b>2024</b>Primeira edição do IPS Brasil. As propostas do 12º CNP passam a ser orientadas pelos indicadores do índice ligados à engenharia.</li>
+    <li><b>2025</b>12º CNP em Vitória (ES) aprova 55 Propostas Nacionais Sistematizadas.</li>
+    <li><b>2026</b>O Confea lança o INFRA-BR, com 67 indicadores de infraestrutura por UF.</li>
+    <li><b>2027</b>Atualização do INFRA-BR estadual e início do recorte municipal.</li>
+  </ol>
+</div></section>
+
 <section id="sintese"><div class="wrap">
   <div class="sechead"><div class="eyebrow">Síntese</div><h2>O que a análise mostra</h2></div>
   <div class="tiles" id="tiles"></div>
@@ -220,6 +258,14 @@ footer p{max-width:none;opacity:.9}
     <li><div><b>Os dados por UF mostram onde cada proposta rende mais.</b> <span id="f7"></span></div></li>
     <li><div><b>O CNP também aponta lacunas de medição.</b> Qualidade do ar, acessibilidade de calçadas, condição de pontes, iluminação pública, qualidade de rios e capacidade técnica municipal aparecem nas propostas e não são medidos hoje. São candidatos naturais a novos indicadores do INFRA-BR.</div></li>
   </ol>
+</div></section>
+
+<section id="prioritarias"><div class="wrap">
+  <div class="sechead"><div class="eyebrow">Prioridade de encaminhamento</div><h2>As 18 PNS com potencial alto no INFRA-BR e no IPS Brasil</h2>
+  <p>Estas propostas atuam diretamente sobre indicadores dos dois índices e têm efeito relevante esperado em ambos. São as candidatas naturais a encaminhamento prioritário, porque o resultado pode ser acompanhado desde já pelo INFRA-BR e pelo IPS Brasil. <span id="p18eixo"></span></p></div>
+  <div class="tbl"><table id="tb18" class="corr"><colgroup><col style="width:7%"><col style="width:27%"><col style="width:28%"><col style="width:24%"><col style="width:14%"></colgroup><thead><tr><th>PNS</th><th>Proposta</th><th>Indicadores diretos do INFRA-BR</th><th>Indicadores diretos do IPS Brasil</th><th>ODS</th></tr></thead><tbody></tbody></table></div>
+  <p class="no-print"><button class="btnlink" id="go18" type="button">Ver as 18 no explorador</button></p>
+  <div class="potnote"></div>
 </div></section>
 
 <section id="metodo"><div class="wrap">
@@ -243,6 +289,21 @@ footer p{max-width:none;opacity:.9}
   <h3>Indicadores do INFRA-BR mais citados pelas PNS</h3>
   <div class="chart" id="chInd"></div>
   <p class="note">Mostrados os 14 indicadores com mais PNS associadas. A lista completa, inclusive os indicadores sem nenhuma PNS associada, está na planilha.</p>
+  <h3 id="corrH">Correlacione as PNS com o INFRA-BR, o IPS Brasil e as ODS</h3>
+  <p id="corrP">Marque um ou mais itens para ver, lado a lado, os indicadores e as ODS relacionados a cada PNS. As escolhas se somam: com os três marcados, a tabela mostra a correlação completa. D indica relação direta e I, indireta.</p>
+  <div class="chk" id="corrChk" role="group" aria-label="Itens da correlação">
+    <span class="lbl">Mostrar</span>
+    <label><input type="checkbox" value="infra" checked> INFRA-BR</label>
+    <label><input type="checkbox" value="ips" checked> IPS Brasil</label>
+    <label><input type="checkbox" value="ods" checked> ODS</label>
+    <span class="sep"></span>
+    <span class="lbl">Filtrar</span>
+    <label><input type="checkbox" id="cDir"> Só relações diretas</label>
+    <label><input type="checkbox" id="cAll"> Só PNS ligadas a todos os itens marcados</label>
+    <label><input type="checkbox" id="c18"> Só as 18 com potencial alto nos dois índices</label>
+  </div>
+  <div class="count" id="corrCount"></div>
+  <div class="tbl" id="corrWrap"><table id="tbCorr" class="corr"><thead></thead><tbody></tbody></table></div>
 </div></section>
 
 <section id="ips"><div class="wrap">
@@ -283,7 +344,9 @@ footer p{max-width:none;opacity:.9}
 <section id="explorador"><div class="wrap">
   <div class="sechead"><div class="eyebrow">As 55 propostas</div><h2>Explorador das PNS</h2>
   <p>Filtre por eixo, dimensão, potencial ou ODS e abra cada proposta para ver indicadores, ODS e a análise. A estrela marca as PNS destacadas no documento “Considerações sobre o INFRA-BR e o 12º CNP”.</p></div>
+  <div class="potnote"></div>
   <div class="filters">
+    <label class="tg"><input type="checkbox" id="f18"> Só as 18 PNS com potencial alto no INFRA-BR e no IPS</label>
     <label for="fEixo">Eixo temático<select id="fEixo"></select></label>
     <label for="fDim">Dimensão INFRA-BR<select id="fDim"></select></label>
     <label for="fPot">Potencial INFRA-BR<select id="fPot"><option value="">Todos</option><option>Alto</option><option>Médio</option><option>Baixo</option><option value="—">Sem indicador</option></select></label>
@@ -316,6 +379,18 @@ footer p{max-width:none;opacity:.9}
     <li>Usar o recorte por UF do INFRA-BR para territorializar as PNS nacionais, começando pelas UFs nas últimas posições de cada dimensão.</li>
     <li>Levar as lacunas acima para a próxima edição do INFRA-BR como agenda de novos indicadores, com o Sistema Confea/Crea como produtor de parte dos dados.</li>
   </ul>
+</div></section>
+
+<section id="proximos"><div class="wrap">
+  <div class="sechead"><div class="eyebrow">O que vem por aí</div><h2>INFRA-BR municipal, a partir de 2027</h2>
+  <p>A partir de 2027, junto com a atualização do INFRA-BR estadual, o índice passa a contemplar também o recorte municipal. Para as propostas do CNP, essa mudança de escala é decisiva: boa parte delas é executada nos municípios, e hoje o efeito delas se dilui na nota do estado.</p></div>
+  <div class="gaps">
+    <div class="gap"><div class="k">Propostas que acontecem no município</div><p><b id="nMun"></b> das 55 PNS citam os municípios como lugar de execução, com planos diretores, arborização, drenagem, resíduos sólidos, iluminação pública e energia municipal. No recorte municipal, o resultado poderá ser medido onde a proposta for aplicada.</p></div>
+    <div class="gap"><div class="k">Mesma escala do IPS Brasil</div><p>O IPS Brasil já é calculado para os 5.570 municípios. Com o INFRA-BR municipal, os dois índices poderão ser lidos lado a lado no mesmo território, e as 18 PNS com potencial alto nos dois índices ganham um painel comum de acompanhamento.</p></div>
+    <div class="gap"><div class="k">Lacunas com vocação municipal</div><p>Várias lacunas apontadas neste relatório, como capacidade técnica municipal, iluminação pública, arborização e acessibilidade urbana, são de natureza local e podem orientar a escolha de indicadores da versão municipal.</p></div>
+    <div class="gap"><div class="k">Próximo passo deste estudo</div><p>Com os dados municipais, refazer o cruzamento das PNS com os indicadores, apontar os municípios prioritários de cada proposta e acompanhar a evolução entre as edições do CNP.</p></div>
+  </div>
+  <p class="callout">Esta seção é uma prévia. O desenho do recorte municipal será apresentado na atualização do INFRA-BR de 2027.</p>
 </div></section>
 
 <footer><div class="wrap">
@@ -402,13 +477,24 @@ $('#fEixo').innerHTML = '<option value="">Todos</option>' + eixos.map(e => `<opt
 $('#fDim').innerHTML = '<option value="">Todas</option>' + D.dims.map(d => `<option value="${d.k}">${esc(d.nome)}</option>`).join('');
 $('#fUf').innerHTML = '<option value="">Todas</option>' + D.ufs.map(u => `<option>${u}</option>`).join('');
 $('#fOds').innerHTML = '<option value="">Todas</option>' + D.ods.filter(o => o.qtd).map(o => `<option value="${o.n}">ODS ${o.n} – ${esc(o.nome)}</option>`).join('');
+const TOP18 = new Set(R.filter(r => r.pot_infra === 'Alto' && r.pot_ips === 'Alto').map(r => r.n));
+const POTNOTE = `<div class="h">Como ler o potencial de melhoria</div>
+<p>Cada PNS recebe uma avaliação para o INFRA-BR e outra para o IPS Brasil. Ela indica o quanto a proposta, se implementada, tende a mover os indicadores daquele índice. Não é um juízo sobre a importância da proposta.</p>
+<div><span class="pill Alto">Alto</span><p>A proposta atua diretamente sobre aquilo que um ou mais indicadores medem, e o efeito esperado é relevante.</p></div>
+<div><span class="pill Médio">Médio</span><p>Atua diretamente, mas com alcance restrito (piloto, um só local ou um só indicador), ou o efeito depende de um plano ou norma ser executado.</p></div>
+<div><span class="pill Baixo">Baixo</span><p>O efeito sobre os indicadores é indireto ou marginal: a proposta melhora condições que só chegam ao indicador por um caminho mais longo.</p></div>
+<div><span class="pill none">Sem indicador</span><p>Nenhum indicador atual do índice mede o que a proposta muda. Indica uma lacuna de medição, não baixa relevância.</p></div>`;
+document.querySelectorAll('.potnote').forEach(el => el.innerHTML = POTNOTE);
+const odsChips = r => `<span class="odsm">${r.ods.map(o => `<span style="background:${ODS[o.n].cor}" title="ODS ${o.n}: ${esc(o.nome)}">${o.n}</span>`).join('')}</span>`;
+const indList = (arr, dir) => { const a = arr.filter(i => !dir || i.nivel === 'D'); return a.length ? `<ul>${a.map(i => `<li><span class="lv ${i.nivel}" title="${i.nivel === 'D' ? 'Relação direta' : 'Relação indireta'}">${i.nivel}</span><span>${esc(i.ind)}</span></li>`).join('')}</ul>` : (dir && arr.length ? '<br><span class="note">Sem relação direta</span>' : ''); };
+const pnsCell = r => `<td class="rank"><a href="#pns-${r.n}" data-pns="${r.n}">${r.n}</a></td><td><a href="#pns-${r.n}" data-pns="${r.n}">${esc(r.titulo)}</a><br><span class="note">${esc(r.eixo)}</span></td>`;
 const potPill = p => p === '—' ? '<span class="pill none">Sem indicador</span>' : `<span class="pill ${p}">${p}</span>`;
 function card(r) {
   const li = (arr, f) => arr.length ? `<ul>${arr.map(f).join('')}</ul>` : '<p class="note">Nenhum indicador correspondente.</p>';
   return `<details class="pns" id="pns-${r.n}"><summary>
     <div class="pn"><small>PNS</small>${r.n}</div>
     <div class="st"><div class="t">${esc(r.titulo)} ${r.destaque ? '<span class="star" title="Destacada no documento Considerações sobre o INFRA-BR e o 12º CNP">★</span>' : ''}</div>
-      <div class="m">${esc(r.eixo)} · ${esc(r.abr)}${r.uf ? ' · ' + esc(r.uf) : ''} · ${esc(r.natureza)}</div></div>
+      <div class="m">${esc(r.eixo)} · ${esc(r.abr)}${r.uf ? ' · ' + esc(r.uf) : ''} · ${esc(r.natureza)}${TOP18.has(r.n) ? ' <span class="tag18" title="Potencial alto no INFRA-BR e no IPS Brasil">Prioritária</span>' : ''}</div></div>
     <div class="pots"><div>INFRA-BR ${potPill(r.pot_infra)}</div><div>IPS ${potPill(r.pot_ips)}</div></div>
   </summary><div class="body">
     <p class="an">${esc(r.analise)}</p>
@@ -429,14 +515,45 @@ function card(r) {
 const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 function render() {
   const uf = $('#fUf').value, e = $('#fEixo').value, dm = $('#fDim').value, p = $('#fPot').value, o = $('#fOds').value, t = norm($('#fTxt').value.trim());
-  const list = R.filter(r => (!uf || r.uf_prior.includes(uf)) && (!e || r.eixo === e) && (!dm || r.infra.some(i => i.dim === dm)) && (!p || r.pot_infra === p)
+  const s18 = $('#f18').checked;
+  const list = R.filter(r => (!s18 || TOP18.has(r.n)) && (!uf || r.uf_prior.includes(uf)) && (!e || r.eixo === e) && (!dm || r.infra.some(i => i.dim === dm)) && (!p || r.pot_infra === p)
     && (!o || r.ods.some(x => x.n == o)) && (!t || norm(r.n + ' ' + r.titulo + ' ' + r.analise + ' ' + r.uf + ' ' + r.proposta).includes(t)));
   $('#count').textContent = `${list.length} de ${R.length} PNS`;
   $('#cards').innerHTML = list.length ? list.map(card).join('') : '<div class="empty">Nenhuma PNS com esses filtros. Limpe um dos filtros para ver mais propostas.</div>';
 }
-['fUf','fEixo','fDim','fPot','fOds'].forEach(id => $('#' + id).addEventListener('change', render));
+['f18','fUf','fEixo','fDim','fPot','fOds'].forEach(id => $('#' + id).addEventListener('change', render));
 $('#fTxt').addEventListener('input', render);
 render();
+// 18 prioritárias
+$('#tb18 tbody').innerHTML = R.filter(r => TOP18.has(r.n)).map(r => `<tr>${pnsCell(r)}<td>${indList(r.infra, true)}</td><td>${indList(r.ips, true)}</td><td>${odsChips(r)}</td></tr>`).join('');
+{ const c = {}; R.filter(r => TOP18.has(r.n)).forEach(r => c[r.eixo] = (c[r.eixo] || 0) + 1);
+  $('#p18eixo').textContent = 'Por eixo: ' + Object.entries(c).sort((a, b) => b[1] - a[1]).map(([e, n]) => `${e} (${n})`).join(', ') + '.'; }
+$('#go18').addEventListener('click', () => { $('#f18').checked = true; render(); $('#explorador').scrollIntoView({ behavior: 'smooth' }); });
+$('#nMun').textContent = R.filter(r => /municip/i.test(r.titulo + ' ' + r.proposta + ' ' + r.abr)).length;
+// correlação com múltipla escolha
+const CORR = {
+  infra: { h: 'INFRA-BR', cell: (r, d) => `${potPill(r.pot_infra)}${indList(r.infra, d)}`, has: (r, d) => r.infra.some(i => !d || i.nivel === 'D') },
+  ips: { h: 'IPS Brasil', cell: (r, d) => `${potPill(r.pot_ips)}${indList(r.ips, d)}`, has: (r, d) => r.ips.some(i => !d || i.nivel === 'D') },
+  ods: { h: 'ODS', cell: r => odsChips(r), has: r => r.ods.length > 0 }
+};
+function renderCorr() {
+  const sel = [...document.querySelectorAll('#corrChk input[value]')].filter(x => x.checked).map(x => x.value);
+  const d = $('#cDir').checked, all = $('#cAll').checked, t18 = $('#c18').checked;
+  if (!sel.length) { $('#tbCorr thead').innerHTML = ''; $('#tbCorr tbody').innerHTML = '<tr><td class="empty">Marque INFRA-BR, IPS Brasil ou ODS para montar a tabela.</td></tr>'; $('#corrCount').textContent = ''; return; }
+  const list = R.filter(r => (!t18 || TOP18.has(r.n)) && (!all || sel.every(k => CORR[k].has(r, d))));
+  $('#tbCorr thead').innerHTML = `<tr><th>PNS</th><th>Proposta</th>${sel.map(k => `<th>${CORR[k].h}</th>`).join('')}</tr>`;
+  $('#tbCorr tbody').innerHTML = list.length ? list.map(r => `<tr>${pnsCell(r)}${sel.map(k => `<td>${CORR[k].cell(r, d)}</td>`).join('')}</tr>`).join('') : `<tr><td colspan="${sel.length + 2}" class="empty">Nenhuma PNS com essa combinação.</td></tr>`;
+  $('#corrCount').textContent = `${list.length} de ${R.length} PNS · ${sel.map(k => CORR[k].h).join(' + ')}`;
+}
+document.querySelectorAll('#corrChk input').forEach(x => x.addEventListener('change', renderCorr));
+renderCorr();
+// links para a ficha da PNS
+function openPns(n) {
+  let el = document.getElementById('pns-' + n);
+  if (!el) { ['fUf','fEixo','fDim','fPot','fOds','fTxt'].forEach(id => $('#' + id).value = ''); $('#f18').checked = false; render(); el = document.getElementById('pns-' + n); }
+  if (el) { el.open = true; el.scrollIntoView({ behavior: 'smooth' }); }
+}
+document.addEventListener('click', e => { const a = e.target.closest('a[data-pns]'); if (a) { e.preventDefault(); openPns(a.dataset.pns); history.replaceState(null, '', '#pns-' + a.dataset.pns); } });
 const h = location.hash.match(/^#pns-(\d+)$/);
 if (h) { const el = document.getElementById('pns-' + h[1]); if (el) { el.open = true; el.scrollIntoView(); } }
 </script>
