@@ -182,6 +182,12 @@ table.corr a{color:inherit}
 .tl li::before{content:"";position:absolute;top:-8px;left:0;width:13px;height:13px;background:var(--ouro)}
 .tl b{display:block;font-family:var(--f-display);font-size:1.25rem;color:var(--accent);margin:6px 0 2px}
 p,.lede,.an,.prop,.lac,.findings li > div,.legend-pot div,.gap p,.potnote p,.recs li,.callout,.tl li{text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+#odsTip{position:fixed;z-index:50;max-width:300px;background:var(--bg);color:var(--fg);border:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,0,.18);font-size:.8rem;line-height:1.45;pointer-events:none;text-align:left}
+#odsTip .th{color:#fff;font-family:var(--f-display);font-weight:600;padding:7px 10px;font-size:.84rem}
+#odsTip .tb{padding:8px 10px;color:var(--fg2)}
+#odsTip .tf{padding:0 10px 8px;font-size:.72rem;color:var(--muted)}
+[data-ods]{cursor:help}
+[data-ods]:focus-visible{outline:2px solid var(--fg);outline-offset:1px}
 .empty{padding:24px;text-align:center;color:var(--muted);background:var(--surface)}
 
 .gaps{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
@@ -447,7 +453,7 @@ barRows($('#chComp'), compItems, R.length, it => `${it.t} PNS`);
 const ipsItems = D.ipsind.slice(0, 10).map(x => ({lab: `${esc(x.ind)}<small>${esc(x.comp)}</small>`, d: x.D.length, i: x.I.length, tip: `PNS diretas: ${x.D.join(', ') || '—'} · indiretas: ${x.I.join(', ') || '—'}`, t: x.D.length + x.I.length}));
 barRows($('#chIps'), ipsItems, Math.max(...ipsItems.map(x => x.t)), it => `${it.t}`);
 const omax = Math.max(...D.ods.map(o => o.qtd));
-$('#chOds').innerHTML = D.ods.map(o => `<div class="row" title="ODS ${o.n}: ${o.qtd} PNS"><div class="lab" style="display:flex;gap:8px;align-items:center"><span class="ods-chip" style="background:${o.cor}">${o.n}</span><span>${esc(o.nome)}</span></div>
+$('#chOds').innerHTML = D.ods.map(o => `<div class="row" title="ODS ${o.n}: ${o.qtd} PNS"><div class="lab" style="display:flex;gap:8px;align-items:center"><span class="ods-chip" data-ods="${o.n}" tabindex="0" style="background:${o.cor}">${o.n}</span><span>${esc(o.nome)}</span></div>
   <div class="bar">${o.qtd ? `<span class="ods-bar" style="width:${o.qtd / omax * 100}%;background:${o.cor}"></span>` : ''}</div><div class="val num">${o.qtd}</div></div>`).join('');
 
 // territorial
@@ -478,6 +484,19 @@ $('#fEixo').innerHTML = '<option value="">Todos</option>' + eixos.map(e => `<opt
 $('#fDim').innerHTML = '<option value="">Todas</option>' + D.dims.map(d => `<option value="${d.k}">${esc(d.nome)}</option>`).join('');
 $('#fUf').innerHTML = '<option value="">Todas</option>' + D.ufs.map(u => `<option>${u}</option>`).join('');
 $('#fOds').innerHTML = '<option value="">Todas</option>' + D.ods.filter(o => o.qtd).map(o => `<option value="${o.n}">ODS ${o.n} – ${esc(o.nome)}</option>`).join('');
+const ODSDESC = {1:'Acabar com a pobreza em todas as suas formas, em todos os lugares.',2:'Acabar com a fome, alcançar a segurança alimentar e melhoria da nutrição e promover a agricultura sustentável.',3:'Assegurar uma vida saudável e promover o bem-estar para todos, em todas as idades.',4:'Assegurar a educação inclusiva e equitativa e de qualidade, e promover oportunidades de aprendizagem ao longo da vida para todos.',5:'Alcançar a igualdade de gênero e empoderar todas as mulheres e meninas.',6:'Assegurar a disponibilidade e gestão sustentável da água e saneamento para todos.',7:'Assegurar o acesso confiável, sustentável, moderno e a preço acessível à energia para todos.',8:'Promover o crescimento econômico sustentado, inclusivo e sustentável, emprego pleno e produtivo e trabalho decente para todos.',9:'Construir infraestruturas resilientes, promover a industrialização inclusiva e sustentável e fomentar a inovação.',10:'Reduzir a desigualdade dentro dos países e entre eles.',11:'Tornar as cidades e os assentamentos humanos inclusivos, seguros, resilientes e sustentáveis.',12:'Assegurar padrões de produção e de consumo sustentáveis.',13:'Tomar medidas urgentes para combater a mudança climática e seus impactos.',14:'Conservação e uso sustentável dos oceanos, dos mares e dos recursos marinhos para o desenvolvimento sustentável.',15:'Proteger, recuperar e promover o uso sustentável dos ecossistemas terrestres, gerir de forma sustentável as florestas, combater a desertificação, deter e reverter a degradação da terra e deter a perda de biodiversidade.',16:'Promover sociedades pacíficas e inclusivas para o desenvolvimento sustentável, proporcionar o acesso à justiça para todos e construir instituições eficazes, responsáveis e inclusivas em todos os níveis.',17:'Fortalecer os meios de implementação e revitalizar a parceria global para o desenvolvimento sustentável.'};
+{ const tip = document.createElement('div'); tip.id = 'odsTip'; tip.setAttribute('role', 'tooltip'); tip.hidden = true; document.body.append(tip);
+  const show = el => { const n = +el.dataset.ods, o = ODS[n]; if (!o) return;
+    const c = o.cor.replace('#', ''), L = (0.299 * parseInt(c.slice(0, 2), 16) + 0.587 * parseInt(c.slice(2, 4), 16) + 0.114 * parseInt(c.slice(4, 6), 16)) / 255;
+    tip.innerHTML = `<div class="th" style="background:${o.cor};color:${L > 0.5 ? '#1a1a1a' : '#fff'}">ODS ${n} · ${esc(o.nome)}</div><div class="tb">${ODSDESC[n]}</div><div class="tf">${o.qtd} PNS vinculadas · Agenda 2030 (ONU)</div>`;
+    tip.hidden = false; const r = el.getBoundingClientRect(), w = tip.offsetWidth, h = tip.offsetHeight;
+    let x = Math.min(Math.max(8, r.left + r.width / 2 - w / 2), innerWidth - w - 8), y = r.bottom + 8; if (y + h > innerHeight - 8) y = Math.max(8, r.top - h - 8);
+    tip.style.left = x + 'px'; tip.style.top = y + 'px'; };
+  const hide = () => { tip.hidden = true; };
+  document.addEventListener('mouseover', e => { const el = e.target.closest('[data-ods]'); el ? show(el) : hide(); });
+  document.addEventListener('focusin', e => { const el = e.target.closest('[data-ods]'); el ? show(el) : hide(); });
+  document.addEventListener('focusout', hide); addEventListener('scroll', hide, { passive: true });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') hide(); }); }
 const TOP18 = new Set(R.filter(r => r.pot_infra === 'Alto' && r.pot_ips === 'Alto').map(r => r.n));
 const POTNOTE = `<div class="h">Como ler o potencial de melhoria</div>
 <p>Cada PNS recebe uma avaliação para o INFRA-BR e outra para o IPS Brasil. Ela indica o quanto a proposta, se implementada, tende a mover os indicadores daquele índice. Não é um juízo sobre a importância da proposta.</p>
@@ -486,7 +505,7 @@ const POTNOTE = `<div class="h">Como ler o potencial de melhoria</div>
 <div><span class="pill Baixo">Baixo</span><p>O efeito sobre os indicadores é indireto ou marginal: a proposta melhora condições que só chegam ao indicador por um caminho mais longo.</p></div>
 <div><span class="pill none">Sem indicador</span><p>Nenhum indicador atual do índice mede o que a proposta muda. Indica uma lacuna de medição, não baixa relevância.</p></div>`;
 document.querySelectorAll('.potnote').forEach(el => el.innerHTML = POTNOTE);
-const odsChips = r => `<span class="odsm">${r.ods.map(o => `<span style="background:${ODS[o.n].cor}" title="ODS ${o.n}: ${esc(o.nome)}">${o.n}</span>`).join('')}</span>`;
+const odsChips = r => `<span class="odsm">${r.ods.map(o => `<span data-ods="${o.n}" tabindex="0" style="background:${ODS[o.n].cor}">${o.n}</span>`).join('')}</span>`;
 const indList = (arr, dir) => { const a = arr.filter(i => !dir || i.nivel === 'D'); return a.length ? `<ul>${a.map(i => `<li><span class="lv ${i.nivel}" title="${i.nivel === 'D' ? 'Relação direta' : 'Relação indireta'}">${i.nivel}</span><span>${esc(i.ind)}</span></li>`).join('')}</ul>` : (dir && arr.length ? '<br><span class="note">Sem relação direta</span>' : ''); };
 const pnsCell = r => `<td class="rank"><a href="#pns-${r.n}" data-pns="${r.n}">${r.n}</a></td><td><a href="#pns-${r.n}" data-pns="${r.n}">${esc(r.titulo)}</a><br><span class="note">${esc(r.eixo)}</span></td>`;
 const potPill = p => p === '—' ? '<span class="pill none">Sem indicador</span>' : `<span class="pill ${p}">${p}</span>`;
@@ -502,7 +521,7 @@ function card(r) {
     <div class="ig">
       <div><h4>INFRA-BR ${potPill(r.pot_infra)}</h4>${li(r.infra, i => `<li><span class="lv ${i.nivel}" title="${i.nivel === 'D' ? 'Relação direta' : 'Relação indireta'}">${i.nivel}</span><span>${esc(i.ind)}<small>${esc(i.dim_nome)} · ${esc(i.comp)}</small><span class="dt num">Média UFs ${fmt(i.media)} · pior ${i.min_uf} (${fmt(i.min)}) · melhor ${i.max_uf} (${fmt(i.max)}) · ρ ${fmtr(i.rho)}</span></span></li>`)}</div>
       <div><h4>IPS Brasil ${potPill(r.pot_ips)}</h4>${li(r.ips, i => `<li><span class="lv ${i.nivel}" title="${i.nivel === 'D' ? 'Relação direta' : 'Relação indireta'}">${i.nivel}</span><span>${esc(i.ind)}<small>${esc(i.comp)}</small></span></li>`)}</div>
-      <div><h4>ODS</h4><div class="odsl">${r.ods.map(o => `<span class="o"><span class="ods-chip" style="background:${ODS[o.n].cor}" title="${esc(o.nome)}">${o.n}</span>${esc(o.nome)} <span class="note">(metas ${esc(o.metas)})</span></span>`).join('')}</div></div>
+      <div><h4>ODS</h4><div class="odsl">${r.ods.map(o => `<span class="o"><span class="ods-chip" data-ods="${o.n}" tabindex="0" style="background:${ODS[o.n].cor}">${o.n}</span>${esc(o.nome)} <span class="note">(metas ${esc(o.metas)})</span></span>`).join('')}</div></div>
     </div>
     ${r.uf_scores ? `<div class="met">
       <div><b>${r.estrutural}</b>Relevância estrutural (ρ médio ${fmtr(r.rho_medio)})</div>
