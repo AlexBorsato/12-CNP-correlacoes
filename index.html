@@ -188,6 +188,12 @@ p,.lede,.an,.prop,.lac,.findings li > div,.legend-pot div,.gap p,.potnote p,.rec
 #odsTip .tf{padding:0 10px 8px;font-size:.72rem;color:var(--muted)}
 [data-ods]{cursor:help}
 [data-ods]:focus-visible{outline:2px solid var(--fg);outline-offset:1px}
+.rholeg{background:var(--surface);padding:14px;display:grid;gap:8px;font-size:.84rem;color:var(--fg2)}
+.rholeg .h{font-family:var(--f-display);font-weight:600;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--fg)}
+.rholeg .sc{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px 16px;margin-top:4px}
+.rholeg .sc div{border-top:1px solid var(--line);padding-top:8px}
+.rholeg .sc b{display:block;font-family:var(--f-display);color:var(--fg);margin-bottom:2px}
+.rholeg .k{display:inline-block;width:22px;height:6px;margin-bottom:4px}
 .empty{padding:24px;text-align:center;color:var(--muted);background:var(--surface)}
 
 .gaps{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
@@ -332,7 +338,17 @@ footer p{max-width:none;opacity:.9}
   <div class="sechead"><div class="eyebrow">INFRA-BR por UF</div><h2>Leitura por componente e indicador</h2>
   <p>Os 20 componentes do INFRA-BR, com a média das 27 UFs, as UFs de pior desempenho, a correlação com a nota geral e as PNS que atuam sobre cada um.</p></div>
   <div class="tbl"><table id="tbComp"><colgroup><col style="width:25%"><col style="width:11%"><col style="width:11%"><col style="width:11%"><col style="width:16%"><col style="width:13%"><col style="width:13%"></colgroup><thead><tr><th>Componente</th><th class="c">Média das UFs</th><th class="c">Amplitude</th><th class="c">ρ com a nota geral</th><th class="c">Três piores UFs</th><th class="c">PNS diretas</th><th class="c">PNS só indiretas</th></tr></thead><tbody></tbody></table></div>
-  <p class="note">Amplitude = diferença entre a melhor e a pior UF no componente. ρ = correlação de postos de Spearman entre a nota do componente e a nota geral do INFRA-BR nas 27 UFs.</p>
+  <div class="rholeg" id="rholeg">
+    <div class="h">Como ler a amplitude e o ρ</div>
+    <p><b>Amplitude</b> é a diferença entre a nota da melhor e a da pior UF no componente. Quanto maior, mais desigual é o país naquele tema e maior o espaço para as UFs atrasadas se aproximarem das demais.</p>
+    <p><b>ρ (rô)</b> é a correlação de postos de Spearman entre a nota do componente e a nota geral do INFRA-BR nas 27 UFs. Vai de −1 a +1 e não indica se o desempenho é bom ou ruim: mostra se o componente anda junto com a infraestrutura geral da UF.</p>
+    <div class="sc">
+      <div><span class="k" style="background:var(--accent)"></span><b>0,6 a 1</b>Forte. As UFs bem colocadas no INFRA-BR também vão bem neste componente. Melhorar aqui tende a puxar a nota geral, e as PNS ligadas a ele têm relevância estrutural alta.</div>
+      <div><span class="k" style="background:var(--accent-soft)"></span><b>0,3 a 0,6</b>Moderada. O componente acompanha a nota geral em parte; há UFs que fogem da regra.</div>
+      <div><span class="k" style="background:var(--line)"></span><b>0 a 0,3</b>Fraca. O desempenho no componente quase não depende da posição geral: até UFs bem colocadas podem ter déficit. Pede leitura UF a UF.</div>
+      <div><span class="k" style="background:var(--ouro)"></span><b>Abaixo de 0</b>Inversa. As UFs mais bem colocadas no INFRA-BR tendem a ir pior neste item, como no planejamento de drenagem, em que SP e MG estão entre as últimas.</div>
+    </div>
+  </div>
   <h3>Onde cada PNS encontra o maior déficit</h3>
   <p>Nota média de cada UF nos indicadores do INFRA-BR ligados diretamente a cada PNS. Quanto mais escura a célula, pior o desempenho da UF nesses indicadores e maior a margem para a proposta fazer diferença.</p>
   <div class="scale"><span>Pior desempenho</span><span class="g" style="background:linear-gradient(90deg,var(--h4),var(--h3),var(--h2),var(--h1),var(--h0))"></span><span>Melhor desempenho</span></div>
